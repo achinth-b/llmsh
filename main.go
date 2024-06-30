@@ -8,27 +8,36 @@ import (
 
 func main() {
 
-	model := flag.String("model", "world", "Default model that we want to use for llmsh")
-	input := flag.String("input", "You are a helpful assistant", "Input string that wishes to be sent to the model")
+	embeddingCmd := flag.NewFlagSet("embedding", flag.ExitOnError)
+	embModelName := embeddingCmd.String("model", "text-embeddings-3-small", "Choose the appropriate embedding model")
+	embInput := embeddingCmd.String("input", "Break down this string into some embedded representation", "Input text to generate embeddings")
 
-	flag.Parse()
-	fmt.Printf(os.Args[0])
+	chatCmd := flag.NewFlagSet("chat", flag.ExitOnError)
+	chatModelName := chatCmd.String("model", "text-embeddings-3-small", "Choose Embeddings Model")
+	chatInput := chatCmd.String("input", "", "Input chat string")
 
-	if flag.NArg() == 0 {
-		fmt.Printf("Hello, %s!\n", *model)
-		fmt.Printf("Hello, %s!\n", *input)
+	if len(os.Args) < 2 {
+		fmt.Printf("Expected the appropriate subcommand.")
+		os.Exit(1)
+	}
 
-	} else if flag.Arg(0) == "model" {
+	switch os.Args[1] {
 
-		if *model == "text-embeddings-3-small" {
+	case "embedding":
 
-			// HTTP Post request
-			fmt.Printf(os.Getenv("apiKey"))
+		embeddingCmd.Parse(os.Args[2:])
 
-		}
+		//embedding processing function file goes here
+		fmt.Println(*embModelName)
+		fmt.Println(*embInput)
 
-	} else {
-		fmt.Printf("Hello, %s!\n", *model)
+	case "chat":
+
+		chatCmd.Parse(os.Args[2:])
+		// chat processing function .go file goes here
+		fmt.Println(*chatModelName)
+		fmt.Println(*chatInput)
+
 	}
 
 }
