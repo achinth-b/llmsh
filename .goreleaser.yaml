@@ -45,9 +45,3 @@ changelog:
       - "^docs:"
       - "^test:"
 
-brews:  
-  - github:
-      owner: achinth-b
-      name: homebrew-llmsh
-
-  homepage: https://github.com/achinth/homebrew-llmsh 
