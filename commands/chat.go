@@ -51,6 +51,10 @@ func Chat(chatModel *string, chatInput *string) (string, error) {
 		return "", errors.New("OPENAI_API_KEY environment variable not set")
 	}
 
+	if !IsOpenAIModelAvailable("chat", chatModel) {
+		return "", errors.New("chosen model not available in the openai embeddings model family")
+	}
+
 	// Prepare the request body
 	reqBody := RequestBody{
 		Model: *chatModel,

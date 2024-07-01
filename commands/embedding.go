@@ -8,7 +8,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"slices"
 )
 
 var availableEmbModels = []string{"text-embedding-3-large", "text-embedding-3-small", "text-embedding-ada-002"}
@@ -42,9 +41,9 @@ func Embedding(embModelName *string, embInput *string) ([]float64, error) {
 	}
 
 	// Prepare the request payload
-	isModelAvailable := slices.Contains(availableEmbModels, *embModelName)
-	if !isModelAvailable {
-		return nil, errors.New("Chosen model not available in the OpenAI embeddings model family")
+
+	if !IsOpenAIModelAvailable("embedding", embModelName) {
+		return nil, errors.New("chosen model not available in the openai embeddings model family")
 	}
 	reqBody := embeddingRequest{
 		Input:          *embInput,
