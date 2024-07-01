@@ -53,7 +53,6 @@ func main() {
 		for name, command := range commandMap {
 			fmt.Printf("  %s: %s\n", name, command.Description)
 		}
-		fmt.Println("\n")
 
 		os.Exit(1)
 	}
