@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"llmsh/commands"
+	"github.com/achinth-b/llmsh/commands"
 )
 
 type Command struct {
