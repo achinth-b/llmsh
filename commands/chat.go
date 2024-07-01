@@ -10,9 +10,6 @@ import (
 	"os"
 )
 
-var apiURL = "https://api.openai.com/v1/"
-var availableChatModels = []string{"gpt-3.5-turbo-0125", "gpt-3.5-turbo"}
-
 type Message struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`

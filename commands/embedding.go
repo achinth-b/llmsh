@@ -10,8 +10,6 @@ import (
 	"os"
 )
 
-var availableEmbModels = []string{"text-embedding-3-large", "text-embedding-3-small", "text-embedding-ada-002"}
-
 type embeddingRequest struct {
 	Input          string `json:"input"`
 	Model          string `json:"model"`
