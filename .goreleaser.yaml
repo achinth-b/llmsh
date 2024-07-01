@@ -44,3 +44,9 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
+brews:
+- name: llmsh
+  homepage: https://github.com/achinth/homebrew-llmsh 
+  tap:
+    owner: achinth-b
+    name: homebrew-llmsh
