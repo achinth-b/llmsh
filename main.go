@@ -88,7 +88,7 @@ func main() {
 
 		chatCmd.FlagSet.Parse(os.Args[2:])
 		// chat processing function .go file goes here
-		chat, err := commands.Chat(*chatModelName, *chatInput)
+		chat, err := commands.Chat(chatModelName, chatInput)
 		if err != nil {
 			fmt.Printf("Please check this error: %v\n", err)
 		}

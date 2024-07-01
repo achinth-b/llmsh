@@ -11,6 +11,7 @@ import (
 )
 
 var apiURL = "https://api.openai.com/v1/"
+var availableChatModels = []string{"gpt-3.5-turbo-0125", "gpt-3.5-turbo"}
 
 type Message struct {
 	Role    string `json:"role"`
@@ -43,7 +44,7 @@ type Usage struct {
 	TotalTokens      int `json:"total_tokens"`
 }
 
-func Chat(chatModel string, chatInput string) (string, error) {
+func Chat(chatModel *string, chatInput *string) (string, error) {
 	openAIAPIKey, exists := os.LookupEnv("OPENAI_API_KEY")
 
 	if !(exists) {
@@ -52,9 +53,9 @@ func Chat(chatModel string, chatInput string) (string, error) {
 
 	// Prepare the request body
 	reqBody := RequestBody{
-		Model: chatModel,
+		Model: *chatModel,
 		Messages: []Message{
-			{Role: "user", Content: chatInput},
+			{Role: "user", Content: *chatInput},
 		},
 	}
 
