@@ -66,7 +66,7 @@ func main() {
 		healthCmd.FlagSet.Parse(os.Args[2:])
 		fmt.Printf(os.LookupEnv("OPENAI_API_KEY"))
 
-		fmt.Printf("Successfully added OpenAI API key!")
+		fmt.Printf("Successfully added the OpenAI API key!")
 
 	case "embedding":
 
