@@ -45,7 +45,7 @@ changelog:
       - "^docs:"
       - "^test:"
 brews:
-- name: llmsh
+- name: llmshell
   homepage: https://github.com/achinth/homebrew-llmsh 
   tap:
     owner: achinth-b
